@@ -476,7 +476,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     public void setScaleType(ScaleType scaleType) {
         if (Util.isSupportedScaleType(scaleType) && scaleType != mScaleType) {
             mScaleType = scaleType;
-            update();
+//             update();
         }
     }
 
@@ -486,7 +486,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     public void setZoomable(boolean zoomable) {
         mZoomEnabled = zoomable;
-        update();
+//         update();
     }
 
     public void update() {
