@@ -257,7 +257,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     }
 
     public void setOnSingleFlingListener(OnSingleFlingListener onSingleFlingListener) {
-        this.mSingleFlingListener = onSingleFlingListener;
+//         this.mSingleFlingListener = onSingleFlingListener;
     }
 
     @Deprecated
