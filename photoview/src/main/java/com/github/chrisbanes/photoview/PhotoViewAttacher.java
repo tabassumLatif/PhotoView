@@ -20,6 +20,7 @@ import android.graphics.Matrix;
 import android.graphics.Matrix.ScaleToFit;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -94,6 +95,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     private boolean mZoomEnabled = true;
     private ScaleType mScaleType = ScaleType.FIT_CENTER;
+    float scale = 0;
+    float focalX = 0;
+    float focalY = 0;
+
 
     private OnGestureListener onGestureListener = new OnGestureListener() {
         @Override
@@ -257,7 +262,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     }
 
     public void setOnSingleFlingListener(OnSingleFlingListener onSingleFlingListener) {
-//         this.mSingleFlingListener = onSingleFlingListener;
+        this.mSingleFlingListener = onSingleFlingListener;
     }
 
     @Deprecated
@@ -451,6 +456,9 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     public void setScale(float scale, float focalX, float focalY,
         boolean animate) {
+        this.scale = scale;
+        this.focalX = focalX;
+        this.focalY = focalY;
         // Check to see if the scale is within bounds
         if (scale < mMinScale || scale > mMaxScale) {
             throw new IllegalArgumentException("Scale must be within the range of minScale and maxScale");
@@ -476,7 +484,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     public void setScaleType(ScaleType scaleType) {
         if (Util.isSupportedScaleType(scaleType) && scaleType != mScaleType) {
             mScaleType = scaleType;
-//             update();
+//            update();
         }
     }
 
@@ -486,7 +494,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     public void setZoomable(boolean zoomable) {
         mZoomEnabled = zoomable;
-//         update();
+//        update();
     }
 
     public void update() {
