@@ -105,7 +105,9 @@ public class PhotoView extends AppCompatImageView {
         super.setImageDrawable(drawable);
         // setImageBitmap calls through to this method
         if (attacher != null) {
-//             attacher.update();
+            attacher.update();
+            if(attacher.scale != 0 && attacher.focalX != 0)
+            setScale(attacher.scale, attacher.focalX, attacher.focalY, false);
         }
     }
 
@@ -113,7 +115,9 @@ public class PhotoView extends AppCompatImageView {
     public void setImageResource(int resId) {
         super.setImageResource(resId);
         if (attacher != null) {
-//             attacher.update();
+            attacher.update();
+            if(attacher.scale != 0 && attacher.focalX != 0)
+                setScale(attacher.scale, attacher.focalX, attacher.focalY, false);
         }
     }
 
@@ -121,7 +125,9 @@ public class PhotoView extends AppCompatImageView {
     public void setImageURI(Uri uri) {
         super.setImageURI(uri);
         if (attacher != null) {
-//             attacher.update();
+            attacher.update();
+            if(attacher.scale != 0 && attacher.focalX != 0)
+                setScale(attacher.scale, attacher.focalX, attacher.focalY, false);
         }
     }
 
@@ -130,6 +136,8 @@ public class PhotoView extends AppCompatImageView {
         boolean changed = super.setFrame(l, t, r, b);
         if (changed) {
             attacher.update();
+            if(attacher.scale != 0 && attacher.focalX != 0)
+                setScale(attacher.scale, attacher.focalX, attacher.focalY, false);
         }
         return changed;
     }
